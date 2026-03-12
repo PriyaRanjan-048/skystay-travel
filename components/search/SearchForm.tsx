@@ -211,7 +211,7 @@ const SearchForm = ({ type }: SearchFormProps) => {
     }
   };
 
-  // Real function for location suggestions using Sky-Scrapper API
+  // Location suggestions via our internal API (Duffel-backed)
   const fetchLocationSuggestions = async (query: string): Promise<any[]> => {
     if (query.length < 2) return [];
     

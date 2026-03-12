@@ -17,13 +17,10 @@
 - ✅ Added smooth animations using Tailwind animations
 - ✅ Included responsive design for all screen sizes
 
-## 3. Amadeus API Integration
-- ✅ Moved API credentials to environment variables for better security
-- ✅ Added token caching to prevent unnecessary authentication requests
-- ✅ Improved error handling with detailed error messages
-- ✅ Added automatic retry mechanism for transient errors
-- ✅ Enhanced location search suggestions with proper formatting
-- ✅ Provided fallback data when API is unavailable
+## 3. Duffel API Integration
+- ✅ Flight + location search uses Next.js API routes backed by the Duffel API
+- ✅ Server-side token is read from environment variables
+- ✅ Improved error handling for API failures
 
 ## 4. Enhanced Error Handling
 - ✅ Implemented retry logic for API calls
@@ -42,8 +39,7 @@
 - ✅ Improved responsiveness for mobile devices
 
 ## Environment Setup
-- ✅ Created .env.example file for documentation
-- ✅ Set up proper environment variables in .env.local
+- ✅ Documented required environment variables in `.env.local`
 
 ## Future Improvements
 1. Add persistence for user search preferences

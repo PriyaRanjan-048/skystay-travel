@@ -21,10 +21,9 @@ fi
 echo -e "${GREEN}Installing dependencies...${NC}"
 npm install
 
-echo -e "${GREEN}Creating .env.local file with Amadeus API credentials...${NC}"
+echo -e "${GREEN}Creating .env.local file with Duffel API token...${NC}"
 cat > .env.local << EOL
-NEXT_PUBLIC_AMADEUS_API_KEY=MAzLnUnwLa5tvFoPJKT26r70AjTmwDk8
-NEXT_PUBLIC_AMADEUS_API_SECRET=58mfNbReLZ7Ozz8Q
+DUFFEL_ACCESS_TOKEN=your_duffel_access_token_here
 EOL
 
 echo -e "${GREEN}Starting development server...${NC}"
