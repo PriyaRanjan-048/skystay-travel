@@ -1,16 +1,18 @@
-import { Duffel } from '@duffel/api';
+import { Duffel } from "@duffel/api";
 
-// Duffel API client initialization
-// The token is pulled from environment variables
-const duffelToken = process.env.DUFFEL_ACCESS_TOKEN || '';
-
-if (!duffelToken) {
-  console.warn('DUFFEL_ACCESS_TOKEN is missing in environment variables.');
+function getDuffelToken() {
+  const token = process.env.DUFFEL_ACCESS_TOKEN;
+  if (!token) {
+    throw new Error(
+      "DUFFEL_ACCESS_TOKEN is not set. Add it to your environment (e.g. Vercel Project Settings → Environment Variables) and redeploy."
+    );
+  }
+  return token;
 }
 
-const duffel = new Duffel({
-  token: duffelToken,
-});
+function getDuffelClient() {
+  return new Duffel({ token: getDuffelToken() });
+}
 
 export class DuffelClient {
   /**
@@ -21,6 +23,7 @@ export class DuffelClient {
     try {
       if (!query || query.length < 2) return [];
 
+      const duffel = getDuffelClient();
       const response = await duffel.suggestions.list({ query });
       
       // Filter for airports and cities and return in a consistent format
@@ -69,6 +72,7 @@ export class DuffelClient {
       }
 
       // Create the offer request
+      const duffel = getDuffelClient();
       const offerRequest = await duffel.offerRequests.create({
         slices,
         passengers,
