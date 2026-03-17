@@ -1,0 +1,3 @@
+export const CONTACT_PHONE_DISPLAY = "1-800-123-4567";
+export const CONTACT_PHONE_TEL = "+18001234567";
+

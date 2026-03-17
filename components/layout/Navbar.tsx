@@ -12,6 +12,8 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const isLinkActive = (path: string) => pathname === path;
+  const isHome = pathname === "/";
+  const useSolidNav = isScrolled || !isHome;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,18 +35,18 @@ const Navbar = () => {
   return (
     <nav
       className={`w-full fixed top-0 left-0 z-40 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md py-3" : "bg-transparent py-5"
+        useSolidNav ? "bg-white shadow-md py-3" : "bg-transparent py-5"
       }`}
-      style={{ marginTop: "40px" }}
+      style={{ top: "var(--promo-bar-height, 40px)" }}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl md:text-3xl font-bold flex items-center">
-            <span className={isScrolled ? "text-primary-600" : "text-white text-shadow-sm"}>
+            <span className={useSolidNav ? "text-primary-600" : "text-white text-shadow-sm"}>
               Sky
             </span>
-            <span className={isScrolled ? "text-secondary-600" : "text-primary-300 text-shadow-sm"}>
+            <span className={useSolidNav ? "text-secondary-600" : "text-primary-300 text-shadow-sm"}>
               Stay
             </span>
           </Link>
@@ -57,10 +59,10 @@ const Navbar = () => {
                 href={link.path}
                 className={`font-medium text-sm ${
                   isLinkActive(link.path)
-                    ? isScrolled
+                    ? useSolidNav
                       ? "text-primary-600"
                       : "text-white font-semibold text-shadow-sm"
-                    : isScrolled
+                    : useSolidNav
                     ? "text-gray-600 hover:text-primary-600"
                     : "text-white text-shadow-sm hover:text-primary-200"
                 } transition-colors relative`}
@@ -99,9 +101,9 @@ const Navbar = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
-                <FaTimes className={isScrolled ? "text-gray-800" : "text-white"} />
+                <FaTimes className={useSolidNav ? "text-gray-800" : "text-white"} />
               ) : (
-                <FaBars className={isScrolled ? "text-gray-800" : "text-white"} />
+                <FaBars className={useSolidNav ? "text-gray-800" : "text-white"} />
               )}
             </button>
           </div>

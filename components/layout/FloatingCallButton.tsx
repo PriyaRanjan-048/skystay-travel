@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaPhone, FaTimes } from "react-icons/fa";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL } from "@/lib/contact";
 
 const FloatingCallButton = () => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -20,17 +21,17 @@ const FloatingCallButton = () => {
           <p className="font-semibold mb-1">Need help booking?</p>
           <p className="text-gray-300 text-xs mb-2">Call our travel experts for exclusive deals!</p>
           <a
-            href="tel:+18001234567"
+            href={`tel:${CONTACT_PHONE_TEL}`}
             className="text-primary-300 font-bold text-sm hover:text-primary-200"
           >
-            1-800-123-4567
+            {CONTACT_PHONE_DISPLAY}
           </a>
         </div>
       )}
 
       {/* Floating Button */}
       <a
-        href="tel:+18001234567"
+        href={`tel:${CONTACT_PHONE_TEL}`}
         className="group relative bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110"
         onMouseEnter={() => setShowTooltip(true)}
         aria-label="Call to book"

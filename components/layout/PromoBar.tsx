@@ -1,10 +1,36 @@
 "use client";
 
+import { useLayoutEffect, useRef } from "react";
 import { FaPhone, FaHeadset } from 'react-icons/fa';
 
 export const PromoBar = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const setVar = () => {
+      const h = Math.ceil(el.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--promo-bar-height", `${h}px`);
+    };
+
+    setVar();
+    const ro = new ResizeObserver(() => setVar());
+    ro.observe(el);
+    window.addEventListener("resize", setVar);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", setVar);
+    };
+  }, []);
+
   return (
-    <div className="fixed top-0 left-0 w-full bg-gradient-to-r from-primary-800 via-primary-700 to-secondary-700 text-white py-2.5 z-50">
+    <div
+      ref={ref}
+      className="fixed top-0 left-0 w-full bg-gradient-to-r from-primary-800 via-primary-700 to-secondary-700 text-white py-2.5 z-50"
+    >
       <div className="container mx-auto px-4 flex items-center justify-center">
         <div className="flex items-center space-x-3">
           <FaHeadset className="text-primary-200 text-lg animate-pulse-slow hidden sm:block" />
