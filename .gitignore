@@ -22,3 +22,6 @@ pnpm-debug.log*
 # TypeScript build info
 *.tsbuildinfo
 
+# generated SEO data (build-time)
+lib/generated/
+

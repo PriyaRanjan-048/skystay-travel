@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "gen:seo": "node scripts/generate-seo-routes.mjs",
+    "prebuild": "node scripts/generate-seo-routes.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
