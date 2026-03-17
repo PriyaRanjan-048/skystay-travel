@@ -75,11 +75,11 @@ export default async function RoutePage({ params }: PageProps) {
               Flights • {fromName} → {toName} • Fast booking by phone
             </p>
             <h1 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
-              Cheap Flights from {fromName} to {toName}
+              Call Now for Cheapest Flights: {fromName} to {toName}
             </h1>
             <p className="mt-3 max-w-2xl text-white/90">
-              Call our agents to compare airlines, find the best fares, and secure seats quickly—perfect for urgent or
-              last‑minute trips.
+              Speak to a travel expert in minutes. Get phone-only deals, last‑minute availability, and help with
+              baggage, changes, and family bookings.
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -94,7 +94,13 @@ export default async function RoutePage({ params }: PageProps) {
             </div>
 
             <div className="mt-6">
-              <TrustStrip />
+              <TrustStrip
+                items={[
+                  "Instant booking assistance (real humans)",
+                  "Secure support • No hidden charges",
+                  "24/7 help • English & Español",
+                ]}
+              />
             </div>
           </div>
 
@@ -124,13 +130,15 @@ export default async function RoutePage({ params }: PageProps) {
 
               <div className="mt-4 rounded-xl bg-white p-4 ring-1 ring-gray-200">
                 <p className="text-sm font-bold text-gray-900">Airlines on this route</p>
-                <p className="mt-1 text-sm text-gray-700">Call to compare current options and fares.</p>
+                <p className="mt-1 text-sm text-gray-700">
+                  Call to compare today’s best options and find the fastest/cheapest itinerary.
+                </p>
               </div>
 
               <div className="mt-5 rounded-xl bg-primary-50 p-4 ring-1 ring-primary-100">
-                <p className="font-bold text-primary-800">Prices can change fast.</p>
+                <p className="font-bold text-primary-800">Limited seats & prices change fast.</p>
                 <p className="text-sm text-primary-800/80">
-                  Call now to lock a deal and check live availability before seats sell out.
+                  Call now to check live availability and lock the best deal before it’s gone.
                 </p>
                 <div className="mt-3 flex flex-col gap-2 sm:flex-row">
                   <a
